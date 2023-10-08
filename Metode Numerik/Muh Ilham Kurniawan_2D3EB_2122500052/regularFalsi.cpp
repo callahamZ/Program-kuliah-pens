@@ -22,6 +22,7 @@ main() {
         c = (b*f(a) - a*f(b)) / (f(a) - f(b));
         while (fabs(f(c)) > 0.1)
         {
+            printf("|\t%d\t|\t%.2f\t|\t%.2f\t|\t%.2f\t|\t%.2f\t|\n", i++, a, b, c, f(c));
 
             if (f(a) * f(c) < 0)
                 b = c;
@@ -30,7 +31,8 @@ main() {
 
             c = (b*f(a) - a*f(b)) / (f(a) - f(b));
         }
-        printf("|\t%d\t|\t%.2f\t|\t%.2f\t|\t%.2f\t|\t%.2f\t|\n", i++, a, b, c, f(c));
+
+        printf("Akar = %f", c);
     }
     else {
         printf("Tidak ada akar");
