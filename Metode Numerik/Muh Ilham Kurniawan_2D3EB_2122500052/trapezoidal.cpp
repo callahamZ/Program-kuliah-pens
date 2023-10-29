@@ -2,7 +2,6 @@
 
 float f(float x) {
     float y;
-
     y = 1 / (1 + x);
 
     return y;

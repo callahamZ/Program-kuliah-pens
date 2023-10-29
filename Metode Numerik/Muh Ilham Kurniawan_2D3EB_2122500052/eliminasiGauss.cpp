@@ -1,0 +1,69 @@
+#include<stdio.h>
+
+main () {
+    float a[100][100], m[100][100], b[100], x[100], s;
+    int n, i, j, k;
+
+    printf("Masukkan n : ");
+    scanf("%d", &n);
+
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j <= n; j++)
+        {
+            printf("Masukkan nilai a%d%d : ", i, j);
+            scanf("%f", &a[i][j]);
+        }
+
+        printf("b[%d] : ", i);
+        scanf("%f", &b[i]);
+        printf("=====================\n");
+    }
+
+    for (int i = 1; i <= n; i++)
+    {
+        printf("[ ");
+        for (int j = 1; j <= n; j++)
+        {
+            printf("%.0f ", a[i][j]);
+        }
+
+        printf("][x%d]=[%.0f]\n", i, b[i]);
+    }
+
+
+
+    for (int k = 1; k < n; k++)
+    {
+        for (int i = k+1; i <= n; i++)
+        {
+            m[i][k] = a[i][k] / a[k][k];
+
+            for (int j = k; j <= n; j++)
+            {
+                a[i][j] = a[i][j] - m[i][k]*a[k][j];
+            }
+
+            b[i] = b[i] - m[i][k]*b[k];
+        }
+
+    }
+
+    for (int i = n; i >= 1; i--)
+    {
+        s=0;
+        for (int j = i+1; j <= n; j++)
+        {
+            s = s + a[i][j]*x[j];
+        }
+
+        x[i] = (b[i] - s) / a[i][i];
+    }
+
+    for (int i = 1; i <= n; i++)
+    {
+        printf("X%d = %.2f\n", i, x[i]);
+    }
+
+
+}
